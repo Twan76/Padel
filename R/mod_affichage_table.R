@@ -7,7 +7,7 @@
 #' @noRd 
 #'
 #' @importFrom shiny NS tagList 
-#' @importFrom DT DTOutput renderDT datatable
+#' @importFrom DT DTOutput renderDT datatable formatDate
 mod_affichage_table_ui <- function(id){
   ns <- NS(id)
   tagList(
@@ -23,8 +23,8 @@ mod_affichage_table_server <- function(id, r_global){
     ns <- session$ns
     
     output$tournois_padel_details <- renderDT({
-      # dataset <- datasetInput_TournoisPadel()
-      datatable(r_global$dataset(),filter="top", class = 'cell-border stripe', rownames = F)
+      datatable(r_global$dataset()[,c(1:7)],filter="top", class = 'cell-border stripe', rownames = F) %>%
+                formatDate(c(4,5), method = 'toLocaleDateString', params = list('fr-FR'))
     })
     
   })

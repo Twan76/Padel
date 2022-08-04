@@ -18,19 +18,6 @@ app_server <- function(input, output, session) {
     tournois[intersec_option,]
   })
   
-  # r <- reactiveValues()
-  # 
-  # observe({
-  #   r$dataset <-  
-  #   # Attribue TRUE si l'option sélectionnée correspond, FALSE sinon
-  #   match_epreuve <- (match(tournois[,2],input$epreuve_padel, nomatch=FALSE) > 0)
-  #   match_niveau <- (match(tournois[,3],input$niveau_padel, nomatch=FALSE) > 0)
-  #   # match_date <- ((input$date[1] <= tournois[,4]) & (tournois[,4] <= input$date[2])) | ((input$date[1] <= tournois[,5]) & (tournois[,5] <= input$date[2]))
-  #   # Recupère uniquement les lignes qui satisfont les options sélectionnées
-  #   intersec_option <- (match_epreuve == TRUE & match_niveau == TRUE)
-  #   tournois[intersec_option,]
-  # })
-  
   mod_affichage_table_server("affichage_table_1", r_global = r_global)
-  
+  mod_carte_france_padel_server("carte_france_padel_1", r_global = r_global)
 }
