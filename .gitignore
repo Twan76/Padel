@@ -1,5 +1,9 @@
 .Rproj.user
 .Rhistory
 TournoisPadel.xlsx
+map_villes.xlsx
 .DS_Store
 Padel.Rproj
+inst/doc
+/doc/
+/Meta/

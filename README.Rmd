@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # Padel
 
 <!-- badges: start -->
+[![Codecov test coverage](https://codecov.io/gh/Twan76/Padel/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Twan76/Padel?branch=main)
 <!-- badges: end -->
 
 L'objectif de l'application est de montrer sur une carte de France l'ensemble des tournois de padel ayant lieu en 2022.

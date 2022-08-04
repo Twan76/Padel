@@ -7,11 +7,19 @@ Description: Retrouver les tournois de padel en France en 2022
 License: MIT + file LICENSE
 Imports: 
     config (>= 0.3.1),
+    DT,
     golem (>= 0.3.3),
+    leaflet,
+    readxl,
     shiny (>= 1.7.2)
 Suggests: 
+    covr,
+    knitr,
+    rmarkdown,
     spelling,
     testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
 Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
