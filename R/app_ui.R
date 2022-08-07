@@ -5,6 +5,7 @@
 #' @import shiny
 #' @import readxl
 #' @import stringr
+#' @import shinythemes
 #' @noRd
 
 # Lecture fichier ville
@@ -49,31 +50,25 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    navbarPage(title = "A la recherche de tournois de Padel",
-               tabPanel(icon = icon("child"), 'Padel',
+    navbarPage(title = "Padel", theme = shinytheme("flatly"),
+               tabPanel(title ="A la recherche de tournois",
                         sidebarPanel(
-                          # Filtrage avec les dates
-                          dateRangeInput("date", "Date", start = min(tournois[,4]), end = max(tournois[,5]) , min = min(tournois[,4]) , max=max(tournois[,5]) , format = "dd-mm-yyyy", language = "fr", weekstart = 1),
-                          
-                          # Type d'epreuve
-                          checkboxGroupInput("epreuve_padel", "Type Epreuve", inline=F, sort(unique(tournois[,2])), sort(unique(tournois[,2]))),
-                          
-                          # Niveau
-                          checkboxGroupInput("niveau_padel", "Niveau", inline=F, choices = c("P25", "P100","P250", "P500", "P1000","P2000"), selected = c("P25", "P100","P250", "P500", "P1000","P2000"))
+                          dateRangeInput("date", "Date", start = min(tournois[,4]), end = max(tournois[,5]), min = min(tournois[,4]), max=as.Date(paste(substr(Sys.Date(),1,4),"-12-31",sep="")), format = "dd-mm-yyyy", language = "fr", weekstart = 1),
+                          checkboxGroupInput("epreuve_padel", "Epreuve", inline=F, choices = sort(unique(tournois[,2])), selected = sort(unique(tournois[,2]))),
+                          checkboxGroupInput("niveau_padel", "Niveau", inline=F, choices = c("P25", "P100", "P250", "P500", "P1000", "P2000"), selected = sort(unique(tournois[,3])))
                         ),
                         mainPanel(
                           tabsetPanel(
-                            tabPanel("Données",
-                                     mod_affichage_table_ui("affichage_table_1")
-                            ),
-                            tabPanel("Cartographie",
+                            tabPanel('Cartographie',
                                      mod_carte_france_padel_ui("carte_france_padel_1")
+                            ),
+                            tabPanel('Données',
+                                     mod_affichage_table_ui("affichage_table_1")
                             )
                           )
                         )
                )
     )
-    
   )
 }
 

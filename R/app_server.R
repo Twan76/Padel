@@ -18,6 +18,6 @@ app_server <- function(input, output, session) {
     tournois[intersec_option,]
   })
   
-  mod_affichage_table_server("affichage_table_1", r_global = r_global)
   mod_carte_france_padel_server("carte_france_padel_1", r_global = r_global)
+  mod_affichage_table_server("affichage_table_1", r_global = r_global)
 }
